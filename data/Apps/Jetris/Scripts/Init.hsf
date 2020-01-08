@@ -1,0 +1,98 @@
+-- zeus homer-scripting-file
+
+-- These packets DO stuff.. no more loading modules.. you can potentially start
+-- an entire app from here, even write one entirely in script.
+-- Declare some vars to use 
+-- The first parameter in this case tells homer which module has the scope for usage
+-- If the source module is Homer, all modules have access to the vars
+-- If the source module is Zeus then no modules have access - only Zeus.
+
+-- Load a font please - Arial :-)
+
+Packet("Jetris", "Render.Resize",
+        1024, 768
+)
+
+defaultFont = Packet("Zeus", "Font.Load",
+
+		"Arial",
+		"Data/System/Fonts/ArialS.hff"
+)
+
+-- Send the crc key map
+jetris = CRC("jetris")
+
+-- Man this is a nice way to do key mapping... very sweet
+Packet("Jetris","Input.SubmitCRCKeyMap",
+
+	-- ESCAPE key event
+	1, CRC("shutdown"), jetris, 1,
+	-- ENTER key event
+	28, CRC("newgame"), jetris,256,
+	-- UP key event
+	200, CRC("rotatepiece"), jetris, 256,
+	-- DOWN key event
+	208, CRC("downfast"), jetris, 17
+)
+
+-- Maximum of 16 parameters in a packet so we send another one.
+Packet("Jetris", "Input.SubmitCRCKeyMap",
+
+	-- RIGHT key event
+	205, CRC("moveright"), jetris, 256,
+	-- LEFT key event
+	203, CRC("moveleft"), jetris, 256,
+	-- SPACE key event
+	57, CRC("pause"), jetris, 256
+)
+
+
+-- Send the crc mouse map
+Packet("Jetris","Input.SubmitCRCMouseMap",
+
+	-- Left mouse button event	
+	CRC("MouseDown"), CRC("leftmouse"), jetris
+)
+
+MyWindow = Packet("Jetris","Window.Create",
+	-0.5, -0.8, 1.1, 1.1, 0.002, 0
+)
+
+MySecondWindow = Packet("Jetris","Window.Create",
+	-0.4, -0.8, 1.1, 1.1, 0.001, 0
+)
+
+
+x = 1
+mx = 0.0
+ms = 0.0
+while x<500 do
+	local my = 0.0
+	
+	-- Render text on screen 
+	Packet("Zeus", "Font.RenderChars",	
+		"Hello world",
+		defaultFont ,
+		mx ,
+		mx  ,
+		0.0  ,
+		0.002 + ms
+	)
+
+	Packet("Jetris", "Window.Render",
+		MyWindow,
+		0.002, 0
+	)
+
+	Packet("Jetris", "Window.Render",
+		MySecondWindow,
+		0.001, 0
+	)
+	mx = mx - 0.001
+	ms = ms + 0.0001
+	x=x+1
+	Packet("Jetris","Render.DoRenderFrame")
+end
+
+
+

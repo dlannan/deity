@@ -1,0 +1,102 @@
+﻿Build started 11/05/2013 9:54:09 PM.
+     1>Project "E:\Projects\DEITY\CODE\System\System.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /Gz /TP /analyze- /errorReport:prompt Debugging\Error_types.cpp Geometry\Matrix.cpp Debugging\Profile.cpp
+         Error_types.cpp
+     1>e:\projects\deity\code\system\types\string_types.h(55): warning C4996: '_strlwr': This function or variable may be unsafe. Consider using _strlwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(171) : see declaration of '_strlwr'
+     1>e:\projects\deity\code\system\types\string_types.h(123): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(130): warning C4996: '_gcvt': This function or variable may be unsafe. Consider using _gcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(756) : see declaration of '_gcvt'
+     1>e:\projects\deity\code\system\types\string_types.h(137): warning C4996: '_gcvt': This function or variable may be unsafe. Consider using _gcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(756) : see declaration of '_gcvt'
+     1>e:\projects\deity\code\system\types\string_types.h(153): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _ltoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(910) : see declaration of 'ltoa'
+     1>e:\projects\deity\code\system\types\string_types.h(162): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(171): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(180): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _ltoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(910) : see declaration of 'ltoa'
+     1>e:\projects\deity\code\system\types\string_types.h(196): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(115) : see declaration of 'strcat'
+     1>e:\projects\deity\code\system\types\string_types.h(235): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\string_types.h(240): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\string_types.h(245): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\projects\deity\code\system\types\crc_types.h(404): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\crc_types.h(406): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
+     1>e:\projects\deity\code\system\types\crc_types.h(412): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
+     1>e:\projects\deity\code\system\types\file_types.h(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\projects\deity\code\system\types\file_types.h(207): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(47): warning C4018: '>=' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(51): warning C4018: '>' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(130): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+     1>e:\projects\deity\code\system\geometry\vertex.h(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>e:\projects\deity\code\system\debugging\error_types.cpp(26): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\system\debugging\error_types.cpp(56): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\system\debugging\error_types.cpp(89): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_vsnprintf'
+         Matrix.cpp
+         Profile.cpp
+     1>e:\projects\deity\code\system\types\string_types.h(55): warning C4996: '_strlwr': This function or variable may be unsafe. Consider using _strlwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(171) : see declaration of '_strlwr'
+     1>e:\projects\deity\code\system\types\string_types.h(123): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(130): warning C4996: '_gcvt': This function or variable may be unsafe. Consider using _gcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(756) : see declaration of '_gcvt'
+     1>e:\projects\deity\code\system\types\string_types.h(137): warning C4996: '_gcvt': This function or variable may be unsafe. Consider using _gcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(756) : see declaration of '_gcvt'
+     1>e:\projects\deity\code\system\types\string_types.h(153): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _ltoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(910) : see declaration of 'ltoa'
+     1>e:\projects\deity\code\system\types\string_types.h(162): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(171): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>e:\projects\deity\code\system\types\string_types.h(180): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _ltoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(910) : see declaration of 'ltoa'
+     1>e:\projects\deity\code\system\types\string_types.h(196): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(115) : see declaration of 'strcat'
+     1>e:\projects\deity\code\system\types\string_types.h(235): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\string_types.h(240): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\string_types.h(245): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\projects\deity\code\system\types\crc_types.h(404): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\system\types\crc_types.h(406): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
+     1>e:\projects\deity\code\system\types\crc_types.h(412): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
+     1>e:\projects\deity\code\system\types\file_types.h(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\projects\deity\code\system\types\file_types.h(207): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(47): warning C4018: '>=' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(51): warning C4018: '>' : signed/unsigned mismatch
+     1>e:\projects\deity\code\system\types\timer_types.h(130): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+     1>e:\projects\deity\code\system\geometry\vertex.h(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>e:\projects\deity\code\system\debugging\profile.cpp(39): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\system\debugging\profile.cpp(62): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:".\Debug\System.lib" /NOLOGO .\Debug/Error_types.obj
+         .\Debug/Matrix.obj
+         .\Debug/Profile.obj
+         System.vcxproj -> E:\Projects\DEITY\CODE\System\.\Debug\System.lib
+     1>Done Building Project "E:\Projects\DEITY\CODE\System\System.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.17

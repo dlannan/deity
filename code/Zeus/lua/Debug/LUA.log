@@ -1,0 +1,80 @@
+﻿Build started 11/05/2013 9:54:09 PM.
+     1>Project "E:\Projects\DEITY\CODE\Zeus\lua\LUA.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Iinclude /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /Gz /TC /analyze- /errorReport:prompt src\lapi.c src\lcode.c src\ldebug.c src\ldo.c src\lfunc.c src\lgc.c src\llex.c src\lmem.c src\lobject.c src\lparser.c src\lstate.c src\lstring.c src\ltable.c src\ltests.c src\ltm.c src\lundump.c src\lvm.c src\lzio.c
+         lapi.c
+         lcode.c
+         ldebug.c
+         ldo.c
+     1>e:\projects\deity\code\zeus\lua\src\ldo.c(265): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\projects\deity\code\zeus\lua\src\ldo.c(271): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(233) : see declaration of 'freopen'
+         lfunc.c
+         lgc.c
+         llex.c
+     1>e:\projects\deity\code\zeus\lua\src\llex.c(52): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\zeus\lua\src\llex.c(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\zeus\lua\src\llex.c(88): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lmem.c
+         lobject.c
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(87): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'vsprintf'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(95): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(106): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(109): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(116): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(118): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(119): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>e:\projects\deity\code\zeus\lua\src\lobject.c(122): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lparser.c
+     1>e:\projects\deity\code\zeus\lua\src\lparser.c(76): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\projects\deity\code\zeus\lua\src\lparser.c(112): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lstate.c
+         lstring.c
+         ltable.c
+         ltests.c
+         ltm.c
+         lundump.c
+         lvm.c
+     1>e:\projects\deity\code\zeus\lua\src\lvm.c(59): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lzio.c
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:".\Debug\LUA.lib" /NOLOGO .\Debug/lapi.obj
+         .\Debug/lcode.obj
+         .\Debug/ldebug.obj
+         .\Debug/ldo.obj
+         .\Debug/lfunc.obj
+         .\Debug/lgc.obj
+         .\Debug/llex.obj
+         .\Debug/lmem.obj
+         .\Debug/lobject.obj
+         .\Debug/lparser.obj
+         .\Debug/lstate.obj
+         .\Debug/lstring.obj
+         .\Debug/ltable.obj
+         .\Debug/ltests.obj
+         .\Debug/ltm.obj
+         .\Debug/lundump.obj
+         .\Debug/lvm.obj
+         .\Debug/lzio.obj
+         LUA.vcxproj -> E:\Projects\DEITY\CODE\Zeus\lua\.\Debug\LUA.lib
+     1>Done Building Project "E:\Projects\DEITY\CODE\Zeus\lua\LUA.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.89

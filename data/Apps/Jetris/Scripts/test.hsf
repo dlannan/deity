@@ -1,0 +1,42 @@
+MyWindow = Packet("Jetris","Window.Create",
+	-0.5, -0.8, 1.1, 1.1, 0.002, 0
+)
+
+MySecondWindow = Packet("Jetris","Window.Create",
+	-0.4, -0.8, 1.1, 1.1, 0.001, 0
+)
+
+
+x = 1
+mx = 0.0
+ms = 0.0
+while x<500 do
+	local my = 0.0
+	
+	-- Render text on screen 
+	Packet("Zeus", "Font.RenderChars",	
+		"Hi Honey I love you",
+		defaultFont ,
+		mx ,
+		mx  ,
+		0.0  ,
+		0.002 + ms
+	)
+
+	Packet("Jetris", "Window.Render",
+		MyWindow,
+		0.002, 0
+	)
+
+	Packet("Jetris", "Window.Render",
+		MySecondWindow,
+		0.001, 0
+	)
+	mx = mx - 0.001
+	ms = ms + 0.0001
+	x=x+1
+	Packet("Jetris","Render.DoRenderFrame")
+end
+
+
+

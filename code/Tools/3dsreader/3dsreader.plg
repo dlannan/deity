@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 3DSReader - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP5136.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\develop\DEiTY\Tools\3DSReader\3DSReader.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5136.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5137.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/3DSReader.pdb" /debug /machine:I386 /out:"Debug/3DSReader.exe" /pdbtype:sept 
+.\Debug\3DSReader.obj
+.\Debug\3DSbin.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5137.TMP"
+<h3>Output Window</h3>
+Compiling...
+3DSReader.cpp
+c:\program files\microsoft visual studio\vc98\mfc\include\afxv_w32.h(14) : fatal error C1189: #error :  WINDOWS.H already included.  MFC apps must not #include <windows.h>
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+3DSReader.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,103 @@
+// zeus homer-scripting-file
+
+// These packets DO stuff.. no more loading modules.. you can potentially start
+// an entire app from here, even write one entirely in script.
+// Declare some vars to use 
+// The first parameter in this case tells homer which module has the scope for usage
+// If the source module is Homer, all modules have access to the vars
+// If the source module is Zeus then no modules have access - only Zeus.
+
+Packet(Font,Homer.CreateVars)
+{
+	// To create vars you must decalre the type followed by its name
+	string	"string"
+	string	"MyString"
+	string	"int"
+	string	"MyInt"
+	string	"float"
+	string	"Myfloat"
+}
+
+// Load a font please - Arial :-)
+Packet(Zeus, Font.Load)
+{
+	string		"Arial"
+	string		"Data/System/Fonts/ArialS.hff"
+}
+
+// This places a return int into MyInt - its like a stack. You must correctly order return variables
+// if multiple are returned
+MyInt
+
+// Render text on screen 
+Packet(Zeus, Font.RenderChars)
+{
+	// Text
+	string		"Zeus initial startup sequence...."
+	// Font id
+	int		0
+	// Position
+	float		0.0
+	float		0.0
+	float		0.0
+	// size
+	float		0.5
+}
+
+// Send the crc key map
+// Man this is a nice way to do key mapping... very sweet
+Packet(CrossEyed, Input.SubmitCRCKeyMap)
+{
+	// ESCAPE key event
+	uint		0x01
+	// shutdown	
+	uint		0xf7ffe54 
+	// crosseyed
+	uint		0x3fd36342 
+
+	// RIGHT key event
+	uint		0xCD
+	// moveright
+	uint		0xfe71d2ea
+	// crosseyed
+	uint		0x3fd36342 
+	
+	// LEFT key event
+	uint		0xCB
+	// moveleft
+	uint		0x1e65580c
+	// crosseyed
+	uint		0x3fd36342 
+
+	// UP key event
+	uint		0xC8
+	// ZoomIn
+	uint		0x735b1253
+	// crosseyed
+	uint		0x3fd36342 
+	
+	// DOWN key event
+	uint		0xD0
+	// ZoomOut
+	uint		0xdac0b6dc
+	// crosseyed
+	uint		0x3fd36342 
+
+	// End of keymap!
+	uint		257
+}
+
+// Send the crc mouse map
+Packet(CrossEyed,Input.SubmitCRCMouseMap)
+{
+	// Left mouse button event	
+	uint			0
+	// leftmouse
+	uint			0xcc615468
+	// crosseyed
+	uint			0x3fd36342 
+	
+	// End of Mousemap
+	uint			7
+}
+

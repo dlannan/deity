@@ -1,0 +1,18 @@
+-- zeus homer-scripting-file
+
+-- Use comments to describe a modules function
+
+-- other Post init gear can go here
+
+-- Our app module - in this case the one that starts the game!
+-- Can easily add more user created modules here
+Packet("null", "Zeus.LoadModule",
+
+		"Jetris",
+		"Data/Apps/Jetris/cJetris.dll"
+)
+
+-- Calls Init() of all loaded modules - can manually Init only selected modules if need be
+Packet("null","Zeus.InitAllModules")
+
+

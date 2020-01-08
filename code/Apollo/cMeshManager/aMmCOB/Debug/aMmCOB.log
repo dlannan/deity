@@ -1,0 +1,21 @@
+﻿Build started 11/05/2013 9:55:31 PM.
+     1>Project "E:\Projects\DEITY\CODE\Apollo\cMeshManager\aMmCOB\aMmCOB.vcxproj" on node 3 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/aMmCOB.dll" /INCREMENTAL:NO /NOLOGO user32.lib gdi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:".\Debug/aMmCOB.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug/aMmCOB.lib" /MACHINE:X86 /SAFESEH /DLL .\Debug/aMmCOB.obj
+         .\Debug/Loader.obj
+         .\Debug/Main.obj
+         E:\Projects\DEITY\CODE\System\Debug\System.lib
+     1>aMmCOB.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>System.lib(Error_types.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in aMmCOB.obj
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: "public: __thiscall std::_Container_base12::_Container_base12(void)" (??0_Container_base12@std@@QAE@XZ) already defined in System.lib(Error_types.obj)
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: "public: __thiscall std::_Container_base12::~_Container_base12(void)" (??1_Container_base12@std@@QAE@XZ) already defined in System.lib(Error_types.obj)
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: "public: void __thiscall std::_Container_base12::_Orphan_all(void)" (?_Orphan_all@_Container_base12@std@@QAEXXZ) already defined in System.lib(Error_types.obj)
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: "public: __thiscall std::locale::id::id(unsigned int)" (??0id@locale@std@@QAE@I@Z) already defined in System.lib(Error_types.obj)
+            Creating library .\Debug/aMmCOB.lib and object .\Debug/aMmCOB.exp
+     1>LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>.\Debug/aMmCOB.dll : fatal error LNK1169: one or more multiply defined symbols found
+     1>Done Building Project "E:\Projects\DEITY\CODE\Apollo\cMeshManager\aMmCOB\aMmCOB.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.67

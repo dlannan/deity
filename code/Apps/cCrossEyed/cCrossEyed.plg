@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: cCrossEyed - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP85.tmp" with contents
+[
+/nologo /Gz /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/cCrossEyed.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apps\cCrossEyed\cCrossEyed.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP85.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP86.tmp" with contents
+[
+plib/sg.lib plib/ssg.lib plib/ul.lib opengl32.lib user32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/cCrossEyed.pdb" /debug /machine:I386 /out:"Debug/cCrossEyed.dll" /implib:"Debug/cCrossEyed.lib" /pdbtype:sept 
+.\Debug\cCrossEyed.obj
+.\Debug\Main.obj
+..\..\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP86.tmp"
+<h3>Output Window</h3>
+Compiling...
+cCrossEyed.cpp
+Linking...
+LINK : warning LNK4076: invalid incremental status file "Debug/cCrossEyed.ilk"; linking nonincrementally
+   Creating library Debug/cCrossEyed.lib and object Debug/cCrossEyed.exp
+LINK : warning LNK4098: defaultlib "LIBCD" conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib "LIBC" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+<h3>Results</h3>
+cCrossEyed.dll - 0 error(s), 3 warning(s)
+</pre>
+</body>
+</html>

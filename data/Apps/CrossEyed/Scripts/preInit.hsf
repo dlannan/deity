@@ -1,0 +1,25 @@
+// zeus homer-scripting-file
+
+// Use comments to describe a modules function
+
+// other Post init gear can go here
+
+// Calls Init() of all loaded modules - can manually Init only selected modules if need be
+Packet(null,Zeus.InitAllModules)
+{
+}
+
+//Our app module - in this case the one that starts the game!
+// Can easily add more user created modules here
+Packet(null, Zeus.LoadModule)
+{
+	string		"CrossEyed"
+	string		"Data/Apps/CrossEyed/cCrossEyed.dll"
+}
+
+// Init the MeshView manually
+Packet(null, CrossEyed.Init)
+{
+	string		"crosseyed.ase"
+}
+

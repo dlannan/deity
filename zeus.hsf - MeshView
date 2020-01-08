@@ -1,0 +1,52 @@
+// zeus homer-scripting-file
+
+// Use comments to describe a modules function
+
+// Load up the loadModules script 
+Packet(null,Zeus.LoadScript)
+{
+	string		"Data/Apps/MeshView/Scripts/modules.hsf"
+}
+
+// Load up the preInit script 
+Packet(null,Zeus.LoadScript)
+{
+	string		"Data/Apps/MeshView/Scripts/preInit.hsf"
+}
+
+// Load up the postInit script 
+Packet(null,Zeus.LoadScript)
+{
+	string		"Data/Apps/MeshView/Scripts/postInit.hsf"
+}
+
+// Load up the debug script 
+Packet(null,Zeus.LoadScript)
+{
+	string		"Data/System/Zeus/debug.hsf"
+}
+
+// Execute each script in order
+Packet(null,Zeus.StartRec)
+{
+	// loadModules
+	int			1
+}
+
+Packet(null,Zeus.StartRec)
+{
+	// preInit
+	int			2
+}
+
+Packet(null,Zeus.StartRec)
+{
+	// postInit
+	int			3
+}
+
+Packet(null,Zeus.StartRec)
+{
+	// debug
+	int			4
+}

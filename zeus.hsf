@@ -1,0 +1,33 @@
+-- zeus homer-scripting-file
+
+-- Use comments to describe a modules function
+
+-- Load up the loadModules script 
+Tmodules = Packet(0,"Zeus.LoadScript", 
+	"Data/Apps/Jetris/Scripts/modules.hsf",
+	"modules"
+)
+
+-- Load up the preInit script 
+Tpreinit = Packet(0,"Zeus.LoadScript", 
+	"Data/Apps/Jetris/Scripts/preInit.hsf",
+	"preinit"
+)
+
+-- Load up the postInit script 
+Tpostinit = Packet(0,"Zeus.LoadScript", 
+	"Data/Apps/Jetris/Scripts/postInit.hsf",
+	"postinit"
+)
+-- Load up the debug script 
+Tdebug = Packet(0,"Zeus.LoadScript",
+	"Data/System/Zeus/debug.hsf",
+	"debug"
+)
+
+-- Execute each script in order
+Packet(0,"Zeus.StartRec",Tmodules)
+Packet(0,"Zeus.StartRec",Tpreinit)
+Packet(0,"Zeus.StartRec",Tpostinit)
+Packet(0,"Zeus.StartRec",Tdebug)
+

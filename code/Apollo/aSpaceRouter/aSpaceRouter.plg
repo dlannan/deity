@@ -1,0 +1,365 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: System - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4D.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/System.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\System\System.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4D.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\System.lib"  .\Release\System.obj "
+<h3>Output Window</h3>
+Compiling...
+System.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+System.lib - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: System - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4E.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/System.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\System\System.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4E.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\System.lib"  .\Release\System.obj "
+<h3>Output Window</h3>
+Compiling...
+System.cpp
+Creating library...
+<h3>
+--------------------Configuration: Zeus - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4F.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/Zeus.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Zeus\Appolonius.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\Homer.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\Main.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\ZEUS.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\ZEUS_debug.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP4F.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP50.tmp" with contents
+[
+comctl32.lib winmm.lib user32.lib gdi32.lib comdlg32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Zeus.pdb" /machine:I386 /out:"..\..\Zeus.exe" 
+.\Release\Appolonius.obj
+.\Release\Homer.obj
+.\Release\Main.obj
+.\Release\ZEUS.obj
+.\Release\ZEUS_debug.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP50.tmp"
+<h3>Output Window</h3>
+Compiling...
+Appolonius.cpp
+Homer.cpp
+Main.cpp
+ZEUS.cpp
+ZEUS_debug.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Zeus.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aFont - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP52.tmp" with contents
+[
+/nologo /Gz /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Release/aFont.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aFont\aFont.cpp"
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aFont\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP52.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP53.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aFont.pdb" /machine:I386 /out:"Release/aFont.dll" /implib:"Release/aFont.lib" 
+.\Release\aFont.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP53.tmp"
+<h3>Output Window</h3>
+Compiling...
+aFont.cpp
+Main.cpp
+Linking...
+   Creating library Release/aFont.lib and object Release/aFont.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP57.bat" with contents
+[
+@echo off
+copy Debug\aFont.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP57.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aFont.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aInput - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP58.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aInput.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aInput\aInput.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aInput\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP58.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP59.tmp" with contents
+[
+dinput8.lib d3d8.lib dxguid.lib user32.lib winmm.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aInput.pdb" /machine:I386 /out:"Release/aInput.dll" /implib:"Release/aInput.lib" 
+.\Release\aInput.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP59.tmp"
+<h3>Output Window</h3>
+Compiling...
+aInput.cpp
+Main.cpp
+Linking...
+   Creating library Release/aInput.lib and object Release/aInput.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5D.bat" with contents
+[
+@echo off
+copy Release\aInput.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5D.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aInput.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aMaterial - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5E.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aMaterial.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aMaterial\aMaterial.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aMaterial\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5E.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5F.tmp" with contents
+[
+D3dx8.lib gdi32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aMaterial.pdb" /machine:I386 /out:"Release/aMaterial.dll" /implib:"Release/aMaterial.lib" 
+.\Release\aMaterial.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP5F.tmp"
+<h3>Output Window</h3>
+Compiling...
+aMaterial.cpp
+Main.cpp
+Linking...
+   Creating library Release/aMaterial.lib and object Release/aMaterial.exp
+LINK : warning LNK4089: all references to "GDI32.dll" discarded by /OPT:REF
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP63.bat" with contents
+[
+@echo off
+copy Release\aMaterial.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP63.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aMaterial.dll - 0 error(s), 1 warning(s)
+<h3>
+--------------------Configuration: aRenderDX7 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP64.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aRenderDX7.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX7\aRenderDX7.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX7\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP64.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP65.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aRenderDX7.pdb" /machine:I386 /out:"Release/aRenderDX7.dll" /implib:"Release/aRenderDX7.lib" 
+.\Release\aRenderDX7.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP65.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderDX7.cpp
+Main.cpp
+Linking...
+   Creating library Release/aRenderDX7.lib and object Release/aRenderDX7.exp
+
+
+
+<h3>Results</h3>
+aRenderDX7.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aRenderDX8 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP69.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aRenderDX8.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\aRenderDX8.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\Main.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\Rect.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP69.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6A.tmp" with contents
+[
+gdi32.lib dinput8.lib user32.lib d3d8.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aRenderDX8.pdb" /machine:I386 /out:"Release/aRenderDX8.dll" /implib:"Release/aRenderDX8.lib" 
+.\Release\aRenderDX8.obj
+.\Release\Main.obj
+.\Release\Rect.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6A.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderDX8.cpp
+Main.cpp
+Rect.cpp
+Linking...
+   Creating library Release/aRenderDX8.lib and object Release/aRenderDX8.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6E.bat" with contents
+[
+@echo off
+copy Release\aRenderDX8.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6E.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aRenderDX8.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aRenderOGL - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6F.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aRenderOGL.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderOGL\aRenderOGL.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderOGL\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP6F.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP70.tmp" with contents
+[
+opengl32.lib d3dx8.lib gdi32.lib user32.lib winmm.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aRenderOGL.pdb" /machine:I386 /out:"Release/aRenderOGL.dll" /implib:"Release/aRenderOGL.lib" 
+.\Release\aRenderOGL.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP70.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderOGL.cpp
+Main.cpp
+Linking...
+   Creating library Release/aRenderOGL.lib and object Release/aRenderOGL.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP74.bat" with contents
+[
+@echo off
+copy Release\aRenderOGL.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP74.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aRenderOGL.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aWindow - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP75.tmp" with contents
+[
+/nologo /Gz /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/aWindow.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aWindow\aWindow.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aWindow\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP75.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/aWindow.pdb" /machine:I386 /out:"Release/aWindow.dll" /implib:"Release/aWindow.lib"  .\Release\aWindow.obj .\Release\Main.obj \DEVELOP\DEITY2\CODE\System\Release\System.lib "
+<h3>Output Window</h3>
+Compiling...
+aWindow.cpp
+Main.cpp
+Linking...
+   Creating library Release/aWindow.lib and object Release/aWindow.exp
+
+
+
+<h3>Results</h3>
+aWindow.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: cJetris - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP79.tmp" with contents
+[
+/nologo /Gz /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Release/cJetris.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\DEVELOP\DEITY2\CODE\Apps\cJetris\cJetris.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apps\cJetris\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP79.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP7A.tmp" with contents
+[
+winmm.lib user32.lib gdi32.lib d3dx8.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/cJetris.pdb" /machine:I386 /out:"Release/cJetris.dll" /implib:"Release/cJetris.lib" 
+.\Release\cJetris.obj
+.\Release\Main.obj
+\DEVELOP\DEITY2\CODE\System\Release\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP7A.tmp"
+<h3>Output Window</h3>
+Compiling...
+cJetris.cpp
+Main.cpp
+Linking...
+   Creating library Release/cJetris.lib and object Release/cJetris.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP7E.bat" with contents
+[
+@echo off
+copy Release\cJetris.dll ..\..\Apollo\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP7E.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+cJetris.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

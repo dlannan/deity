@@ -1,0 +1,554 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: LUA - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP94.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /I "include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/LUA.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lapi.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lcode.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ldebug.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ldo.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lfunc.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lgc.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\llex.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lmem.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lobject.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lparser.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lstate.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lstring.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltable.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltests.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltm.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lundump.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lvm.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lzio.c"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP94.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP95.tmp" with contents
+[
+/nologo /out:"Debug\LUA.lib" 
+.\Debug\lapi.obj
+.\Debug\lcode.obj
+.\Debug\ldebug.obj
+.\Debug\ldo.obj
+.\Debug\lfunc.obj
+.\Debug\lgc.obj
+.\Debug\llex.obj
+.\Debug\lmem.obj
+.\Debug\lobject.obj
+.\Debug\lparser.obj
+.\Debug\lstate.obj
+.\Debug\lstring.obj
+.\Debug\ltable.obj
+.\Debug\ltests.obj
+.\Debug\ltm.obj
+.\Debug\lundump.obj
+.\Debug\lvm.obj
+.\Debug\lzio.obj
+]
+Creating command line "link.exe -lib @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP95.tmp"
+<h3>Output Window</h3>
+Compiling...
+lapi.c
+lcode.c
+ldebug.c
+ldo.c
+lfunc.c
+lgc.c
+llex.c
+lmem.c
+lobject.c
+lparser.c
+lstate.c
+lstring.c
+ltable.c
+ltests.c
+ltm.c
+lundump.c
+lvm.c
+lzio.c
+Creating library...
+
+
+
+<h3>Results</h3>
+LUA.lib - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: System - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP96.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/System.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\System\Debugging\Error_types.cpp"
+"E:\DEVELOP\DEITY2\CODE\System\Debugging\Profile.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP96.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Debug\System.lib"  .\Debug\Error_types.obj .\Debug\Profile.obj "
+<h3>Output Window</h3>
+Compiling...
+Error_types.cpp
+Profile.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+System.lib - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: System - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP97.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/System.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\System\Debugging\Error_types.cpp"
+"E:\DEVELOP\DEITY2\CODE\System\Debugging\Profile.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP97.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Debug\System.lib"  .\Debug\Error_types.obj .\Debug\Profile.obj "
+<h3>Output Window</h3>
+Compiling...
+Skipping... (no relevant changes detected)
+Error_types.cpp
+Profile.cpp
+Creating library...
+<h3>
+--------------------Configuration: LUA - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP98.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /I "include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/LUA.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lapi.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lcode.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ldebug.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ldo.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lfunc.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lgc.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\llex.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lmem.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lobject.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lparser.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lstate.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lstring.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltable.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltests.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\ltm.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lundump.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lvm.c"
+"E:\DEVELOP\DEITY2\CODE\ZEUS\LUA\src\lzio.c"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP98.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP99.tmp" with contents
+[
+/nologo /out:"Debug\LUA.lib" 
+.\Debug\lapi.obj
+.\Debug\lcode.obj
+.\Debug\ldebug.obj
+.\Debug\ldo.obj
+.\Debug\lfunc.obj
+.\Debug\lgc.obj
+.\Debug\llex.obj
+.\Debug\lmem.obj
+.\Debug\lobject.obj
+.\Debug\lparser.obj
+.\Debug\lstate.obj
+.\Debug\lstring.obj
+.\Debug\ltable.obj
+.\Debug\ltests.obj
+.\Debug\ltm.obj
+.\Debug\lundump.obj
+.\Debug\lvm.obj
+.\Debug\lzio.obj
+]
+Creating command line "link.exe -lib @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP99.tmp"
+<h3>Output Window</h3>
+Compiling...
+lapi.c
+lcode.c
+ldebug.c
+ldo.c
+lfunc.c
+lgc.c
+llex.c
+lmem.c
+lobject.c
+lparser.c
+lstate.c
+lstring.c
+ltable.c
+ltests.c
+ltm.c
+lundump.c
+lvm.c
+lzio.c
+Creating library...
+<h3>
+--------------------Configuration: Zeus - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9A.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /I "lua/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/Zeus.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Zeus\Appolonius.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\Homer.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\Main.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\ZEUS.cpp"
+"E:\DEVELOP\DEITY2\CODE\Zeus\ZEUS_debug.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9A.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9B.tmp" with contents
+[
+comctl32.lib winmm.lib user32.lib gdi32.lib comdlg32.lib lua.lib /nologo /subsystem:windows /profile /debug /machine:I386 /out:"..\..\Zeus.exe" /libpath:"lua\Debug" 
+.\Debug\Appolonius.obj
+.\Debug\Homer.obj
+.\Debug\Main.obj
+.\Debug\ZEUS.obj
+.\Debug\ZEUS_debug.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+.\LUA\Debug\LUA.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9B.tmp"
+<h3>Output Window</h3>
+Compiling...
+Appolonius.cpp
+Homer.cpp
+Main.cpp
+ZEUS.cpp
+ZEUS_debug.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Zeus.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aFont - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9D.tmp" with contents
+[
+/nologo /Gz /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aFont.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aFont\aFont.cpp"
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aFont\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9D.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9E.tmp" with contents
+[
+user32.lib gdi32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aFont.pdb" /map:"Debug/aFont.map" /debug /machine:I386 /out:"Debug/aFont.dll" /implib:"Debug/aFont.lib" /pdbtype:sept 
+.\Debug\aFont.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP9E.tmp"
+<h3>Output Window</h3>
+Compiling...
+aFont.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aFont.lib and object Debug/aFont.exp
+LINK : warning LNK4098: defaultlib "LIBCD" conflicts with use of other libs; use /NODEFAULTLIB:library
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA2.bat" with contents
+[
+@echo off
+copy Debug\aFont.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA2.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aFont.dll - 0 error(s), 1 warning(s)
+<h3>
+--------------------Configuration: aInput - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA3.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aInput.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aInput\aInput.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aInput\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA3.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA4.tmp" with contents
+[
+dinput8.lib d3d8.lib dxguid.lib user32.lib winmm.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aInput.pdb" /debug /machine:I386 /out:"Debug/aInput.dll" /implib:"Debug/aInput.lib" /pdbtype:sept 
+.\Debug\aInput.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA4.tmp"
+<h3>Output Window</h3>
+Compiling...
+aInput.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aInput.lib and object Debug/aInput.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA8.bat" with contents
+[
+@echo off
+copy Debug\aInput.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA8.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aInput.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aMaterial - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA9.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aMaterial.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aMaterial\aMaterial.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aMaterial\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPA9.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAA.tmp" with contents
+[
+D3dx8.lib gdi32.lib user32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aMaterial.pdb" /map:"Debug/aMaterial.map" /debug /machine:I386 /out:"Debug/aMaterial.dll" /implib:"Debug/aMaterial.lib" /pdbtype:sept 
+.\Debug\aMaterial.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAA.tmp"
+<h3>Output Window</h3>
+Compiling...
+aMaterial.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aMaterial.lib and object Debug/aMaterial.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAE.bat" with contents
+[
+@echo off
+copy Debug\aMaterial.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAE.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aMaterial.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aRenderDX7 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAF.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aRenderDX7.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX7\aRenderDX7.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX7\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPAF.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB0.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aRenderDX7.pdb" /debug /machine:I386 /out:"Debug/aRenderDX7.dll" /implib:"Debug/aRenderDX7.lib" /pdbtype:sept 
+.\Debug\aRenderDX7.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB0.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderDX7.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aRenderDX7.lib and object Debug/aRenderDX7.exp
+
+
+
+<h3>Results</h3>
+aRenderDX7.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aRenderDX8 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB4.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aRenderDX8.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\aRenderDX8.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\Main.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\Primitive.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderDX8\Utils.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB4.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB5.tmp" with contents
+[
+user32.lib d3d8.lib gdi32.lib d3dx8.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aRenderDX8.pdb" /debug /machine:I386 /out:"Debug/aRenderDX8.dll" /implib:"Debug/aRenderDX8.lib" /pdbtype:sept 
+.\Debug\aRenderDX8.obj
+.\Debug\Main.obj
+.\Debug\Primitive.obj
+.\Debug\Utils.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB5.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderDX8.cpp
+Main.cpp
+Primitive.cpp
+Utils.cpp
+Linking...
+   Creating library Debug/aRenderDX8.lib and object Debug/aRenderDX8.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB9.bat" with contents
+[
+@echo off
+copy Debug\aRenderDX8.dll ..\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPB9.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+aRenderDX8.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aRenderOGL - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBA.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aRenderOGL.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderOGL\aRenderOGL.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aRenderOGL\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBA.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBB.tmp" with contents
+[
+opengl32.lib d3dx8.lib gdi32.lib user32.lib winmm.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aRenderOGL.pdb" /debug /machine:I386 /out:"Debug/aRenderOGL.dll" /implib:"Debug/aRenderOGL.lib" /pdbtype:sept 
+.\Debug\aRenderOGL.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBB.tmp"
+<h3>Output Window</h3>
+Compiling...
+aRenderOGL.cpp
+e:\develop\deity2\code\apollo\arenderogl\arenderogl.cpp(31) : error C2653: 'Mesh' : is not a class or namespace name
+e:\develop\deity2\code\apollo\arenderogl\arenderogl.cpp(31) : error C2146: syntax error : missing ';' before identifier 'clear'
+e:\develop\deity2\code\apollo\arenderogl\arenderogl.cpp(31) : error C2501: 'Colour_Ft' : missing storage-class or type specifiers
+e:\develop\deity2\code\apollo\arenderogl\arenderogl.cpp(31) : fatal error C1004: unexpected end of file found
+Main.cpp
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+aRenderOGL.dll - 4 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aSpaceRouter - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBC.tmp" with contents
+[
+/nologo /Gz /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aSpaceRouter.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aSpaceRouter\aSpaceRouter.cpp"
+"E:\DEVELOP\DEITY2\CODE\APOLLO\aSpaceRouter\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBC.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBD.tmp" with contents
+[
+user32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aSpaceRouter.pdb" /debug /machine:I386 /out:"Debug/aSpaceRouter.dll" /implib:"Debug/aSpaceRouter.lib" /pdbtype:sept 
+.\Debug\aSpaceRouter.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPBD.tmp"
+<h3>Output Window</h3>
+Compiling...
+aSpaceRouter.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aSpaceRouter.lib and object Debug/aSpaceRouter.exp
+
+
+
+<h3>Results</h3>
+aSpaceRouter.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: aWindow - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC1.tmp" with contents
+[
+/nologo /Gz /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/aWindow.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apollo\aWindow\aWindow.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apollo\aWindow\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC1.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC2.tmp" with contents
+[
+user32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/aWindow.pdb" /debug /machine:I386 /out:"Debug/aWindow.dll" /implib:"Debug/aWindow.lib" /pdbtype:sept 
+.\Debug\aWindow.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC2.tmp"
+<h3>Output Window</h3>
+Compiling...
+aWindow.cpp
+Main.cpp
+Linking...
+   Creating library Debug/aWindow.lib and object Debug/aWindow.exp
+LINK : warning LNK4098: defaultlib "LIBCD" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+<h3>Results</h3>
+aWindow.dll - 0 error(s), 1 warning(s)
+<h3>
+--------------------Configuration: cJetris - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC6.tmp" with contents
+[
+/nologo /Gz /MLd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/cJetris.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DEVELOP\DEITY2\CODE\Apps\cJetris\cJetris.cpp"
+"E:\DEVELOP\DEITY2\CODE\Apps\cJetris\Main.cpp"
+]
+Creating command line "cl.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC6.tmp" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC7.tmp" with contents
+[
+winmm.lib user32.lib gdi32.lib d3dx8.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/cJetris.pdb" /debug /machine:I386 /out:"Debug/cJetris.dll" /implib:"Debug/cJetris.lib" /pdbtype:sept 
+.\Debug\cJetris.obj
+.\Debug\Main.obj
+\DEVELOP\DEITY2\CODE\System\Debug\System.lib
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPC7.tmp"
+<h3>Output Window</h3>
+Compiling...
+cJetris.cpp
+Main.cpp
+Linking...
+   Creating library Debug/cJetris.lib and object Debug/cJetris.exp
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPCB.bat" with contents
+[
+@echo off
+copy Debug\cJetris.dll ..\..\Apollo\Shared
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSPCB.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+cJetris.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

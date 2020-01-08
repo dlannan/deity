@@ -1,0 +1,899 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f28\froman\fcharset238\fprq2 Times New Roman CE;}{\f29\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f31\froman\fcharset161\fprq2 Times New Roman Greek;}{\f32\froman\fcharset162\fprq2 Times New Roman Tur;}
+{\f33\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f34\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f35\froman\fcharset186\fprq2 Times New Roman Baltic;}{\f44\fmodern\fcharset238\fprq1 Courier New CE;}
+{\f45\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f47\fmodern\fcharset161\fprq1 Courier New Greek;}{\f48\fmodern\fcharset162\fprq1 Courier New Tur;}{\f49\fmodern\fcharset177\fprq1 Courier New (Hebrew);}
+{\f50\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f51\fmodern\fcharset186\fprq1 Courier New Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;
+\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{
+\ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs20\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\info{\title Caligari trueSpace2 file format}{\author Michael Plitkins}{\operator Grover}
+{\creatim\yr2002\mo4\dy6\hr7\min20}{\revtim\yr2002\mo4\dy6\hr7\min20}{\printim\yr1995\mo6\dy12\hr12}{\version2}{\edmins1}{\nofpages11}{\nofwords3103}{\nofchars17691}{\*\company CMS}{\nofcharsws21725}{\vern8247}}
+\widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\horzdoc\dghspace120\dgvspace120\dghorigin1701\dgvorigin1984\dghshow0\dgvshow3\jcompress\viewkind1\viewscale100\nolnhtadjtbl \fet0\sectd 
+\linex0\endnhere\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}
+{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 
+\fs20\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 {\b\fs28 Caligari trueSpace2 file format
+\par }{
+\par Document version 2.0
+\par 
+\par 
+\par \tab This document contains details on the geometry and material inform
+ation stored in Caligari object (*.cob) and Scene (*.scn) files.  It should provide enough information for you to be able read and write such files. Most of the information presented is the same for both 1.0 and 2.0 files. Parts that are new or changed fo
+r 2.0 have been marked }{\b\i New for trueSpace2.}{
+\par 
+\par \tab Caligari files are chunked files.  They consist of standard header followed by 1 or more data chunks.  The last chunk in the file should always be the special }{\f2 'END '}{ chunk.  Each chunk consists of a chunk header 
+followed by chunk dependent data.  Chunks may not be embedded in other chunks.  Each chunk contains an ID and a Parent ID.  This allows chunks to be \'93owned\'94 by other chunks.
+\par \tab The file comes in two flavors, ASCII and binary.  These formats encode the same i
+nformation and have the same general layout.  The ASCII files can be edited in a text editor while the binary files are faster for programs to load and save and are smaller.
+\par \tab There is also a provision for little-endian or big-endian formats.  Currently all Caligari files are little-endian so you can safely ignore this for the moment.
+\par 
+\par 
+\par }{\b Caligari Header}{
+\par 
+\par }{\i The header consists of 32 bytes as follows:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell 
+Type\cell Value\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\pard 
+\ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {9 bytes\cell char\cell }{\f2 "Caligari "}{\cell Identifies Caligari file\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 
+\cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {6 bytes\cell char\cell }{\f2 "V00.01"}{
+\cell Version number of file.  This document describes version 00.01 files\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 
+\cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr
+\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell }{\f2 "A"}{ for ASCII or
+\par }{\f2 "B"}{ for binary\cell Specifies whether file is in ASCII format or binary format\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell char\cell }{\f2 "LH"}{ for little endian or
+\par }{\f2 "HL"}{ for big endian\cell Intel based machines are little endian and currently all Caligari files are too.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 
+\cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {13 bytes\cell char\cell }{\f2 
+"             "}{\cell Leave as blank spaces\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 \cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\pard 
+\ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell }{\f2 "\\n"}{  Newline character\cell Newline\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth2271 
+\cellx3879\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth3501 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab When attempting to decide on the format of a file you ar
+e trying to read you should check if the first 15 bytes match the first two fields in the header.  This should definitively identify the file as a Caligari file.  You will also need to know if the file is ASCII or binary and read the appropiate format
+
+\par 
+\par 
+\par }{\b Chunk Headers}{
+\par 
+\par \tab Each chunk consists of a header followed by chunk dependent data.  The chunk header consists of six fields.  
+\par \tab The chunk type tells what type the chunk is and what data it contains.  Several chunk types are listed later in this document.  You
+ should use this field to choose the appropiate routine to read this chunk or if you do not recognize the chunk type you should skip this chunk using the size field described below.
+\par \tab The major and minor version numbers tell you which version of the chunk type this is.  If you get a version number other than the ones you know how to read you should most likely skip this chunk.
+\par \tab The chunk ID and the Parent ID fields let chunks be owned by other chunks.  Each chunk has a unique chunk ID.  You should keep track
+ of these IDs as you read them in.  If the Parent ID is zero then the chunk has no parent, otherwise the Parent ID is the chunk ID of a chunk located earlier in the file and this chunk should be considered to be owned by that previous chunk.  An example o
+f this is a file created from a cube which has been painted with two materials.  The geometry of the cube will be saved in a }{\f2 'PolH'}{ chunk, and following it will be two material }{\f2 'Mat1'}{
+ chunks.  Each of the material chunks will have their Parent ID fields set to the chunk ID of the }{\f2 'PolH'}{ chunk to show that the materials are owned by the cube.
+\par \tab There is also a data size field which tells you how many data bytes are contained in the chunk exclusive of the header.  This allows you to quickly skip chunks you don\rquote 
+t recognize or are not interested in.  Be aware however that it is permissible to set the data size to -1 to indicate that the size is unknown.
+\par 
+\par }{\i The ASCII chunk header is as follows:
+\par }{\f2 "%4c V%d.%d Id %d Parent %d Size %d"
+\par }{
+\par }{\i A typical ASCII chunk header looks like:
+\par }{\f2 "PolH V0.02 Id 2490008 Parent 0 Size 00000947"
+\par }{
+\par This chunk has the type }{\f2 'PolH'}{ (polygonal data chunk), the major version is 0, the minor version is 2, the chunk id is 2490008, the parent id is 0 (no parent), and there are 947 data bytes following the
+ header in this chunk.  I would encourage you to save a few objects in ASCII format and take a look at them in your favorite text editor.  This should give you a feel to the general format of Caligari files.  To output ASCII files from trueSpace choose th
+e \'93Save Object As...\'94 option and check the ASCII box in the file dialog box.
+\par 
+\par }{\i The binary header is as follows:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell char\cell Chunk type\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Major version\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 
+\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {
+2 bytes\cell short\cell Minor version\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Chunk ID\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Parent ID\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Number of bytes in chunk data\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par 
+\par }{\b Some common elements in chunks}{
+\par 
+\par Here are some common elements which appear is several different chunks:
+\par 
+\par }{\b Strings
+\par }{
+\par \tab In ASCII format strings are represented as used by printf and scanf.  That is 1 or more non-whitespace characters followed by a whitespace character.  This allows you to use the }{\f2 "%s"}{
+ format string to read and write strings using printf and scanf.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "%s"}{
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell String length\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {length\cell bytes\cell String in ASCII characters.  Does not include a terminating NULL character.\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\b Names
+\par }{
+\par \tab 
+Many chunks contain a name field.  To keep each name unique within its context, each name has a number attached to it.  We refer to this number as the names dupecount, and it is always >= 0.  The ASCII format consists of a string which contains the name o
+ptionally followed by a comma and the dupecount (e.g. \'93Obj,1\'94).  Note if the dupecount is absent then it should be assumed to be zero.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nName %s"}{
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Name dupecount\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2+length\cell string\cell Name excluding dupecount (see description of strings)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\b Local Axes
+\par }{
+\par \tab Some chunks d
+efine their own local set of axes.  This consists of a position or center for  the axes and directions for the X, Y, and Z axes.  These are given in World coordinates.  The X, Y, and Z axes should be perpendicular to each other and are not relative to the
+ center of axes.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\ncenter %g %g %g"
+\par "\\nx axis %g %g %g"
+\par "\\ny axis %g %g %g"
+\par "\\nz axis %g %g %g"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {12 bytes\cell float triple\cell X, Y, and Z coordinates for center of axes.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {12 bytes\cell float triple\cell X, Y, and Z coordinates for direction of local X axis.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {12 bytes\cell float triple\cell X, Y, and Z coordinates for direction of local Y axis.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {12 bytes\cell float triple\cell X, Y, and Z coordinates for direction of local Z axis.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\b Current Position
+\par }{
+\par \tab Most chunks which contai
+n 3D geometry define a local space.  The current position is a matrix which transforms from local space to world space.  The local coordinates are treated as column vectors with a 1 in the fourth position and multiplied by the matrix to get the correspond
+ing World coordinates.  Note: trueSpace currently does not use the fourth row of the matrix and this row should always be [0,0,0,1] or the matrix may not be interpreted correctly.
+\par 
+\par }{\i  ASCII format:
+\par }{\f2 "\\nTransform"
+\par "\\n%g %g %g %g"
+\par "\\n%g %g %g %g"
+\par "\\n%g %g %g %g"
+\par "\\n%g %g %g %g"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {16 bytes\cell float quad\cell First row of matrix\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {16 bytes\cell float quad\cell Second row of matrix\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {16 bytes\cell float quad\cell Third row of matrix\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {\i Note: binary format does }{\b\i not}{\i  include row 4 of the matrix.  Its assumed to be [0,0,0,1].
+\par }{
+\par 
+\par }{\b Chunk Types}{
+\par 
+\par }{\f2 'END ' }{(End of file Chunk)
+\par 
+\par Chunk type: }{\f2 'END '}{
+\par Major version 1
+\par Minor version 0
+\par 
+\par \tab This chunk contains no data.  It signifies the end of the file and must always be the last chunk in the file.
+\par }\pard \ql \li0\ri1260\widctlpar\brdrb\brdrs\brdrw15\brsp20 \faauto\rin1260\lin0\itap0 {
+\par }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\f2 'Grou' }{(Group Chunk)
+\par 
+\par Chunk type: }{\f2 'Grou'}{
+\par Major version: 0
+\par Minor version: 1
+\par 
+\par The group chunk consists of the following:
+\par \tab Chunk Header
+\par \tab Name
+\par \tab Local Axes
+\par \tab Current Postion
+\par See the appropiate sections for descriptions of each of these.
+\par }\pard \ql \li0\ri1260\widctlpar\brdrb\brdrs\brdrw15\brsp20 \faauto\rin1260\lin0\itap0 {
+\par }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\f2 'PolH'}{ (Polygonal Data Chunk)
+\par 
+\par Chunk type: }{\f2 'PolH'}{
+\par Major version: 0
+\par Minor version: 2
+\par 
+\par The polygonal data chunk consists of the following:
+\par \tab Chunk Header
+\par \tab Name
+\par \tab Local Axes
+\par \tab Current Position
+\par \tab Local Vertex list
+\par \tab UV Vertex list
+\par \tab Face list
+\par 
+\par \tab The Local Vertex list is a list of 3D positions in the local coordinate space defined by this chunk\rquote 
+s Current Position (see appropiate section).  It consists of a count of the number of vertices followed by the vertices.  Each vertex consists of three floats for the X, Y, and Z values.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nWorld Vertices %ld"}{\tab - gives number of local vertices following (>= 0)
+\par 
+\par for each local vertex:
+\par }{\f2 "\\n%f %f %f"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Number of local vertices\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {12 bytes each\cell float triples\cell X, Y, and Z coordinates for each local vertex.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab The UV Vertex list is a list of UV (texture) positions.  It consists of a count of the number of UV vertices followed by the UV vertices.  Each UV vertex consists of two floats for the U and V values.
+\par 
+\par }{\i ASCII format:}{
+\par }{\f2 "\\nTexture Vertices %ld"}{- gives number of UV vertices following (>= 0)
+\par 
+\par for each UV vertex:
+\par }{\f2 "\\n%f %f"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Number of UV vertices\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {8 bytes each\cell float pairs\cell U and V coordinates for each UV vertex.\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab The Face list is a list of faces and holes.  Each face has a set of flags, a material number, a count of the number of face vertices, and a list of face vertices.  Each hole has a count of the number of faces vert
+ices it contains followed by the face vertices.  The hole should be interpreted as being a hole in the most recently read face.  Each face vertex consists of two integers; these are an index into the local Vertex list followed by an index into the UV Vert
+ex list.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nFaces %ld"}{\tab \tab - gives the number of faces following (>=0)
+\par 
+\par for each face:
+\par either: }{\f2 "\\nFace verts %hd flags %hd mat %hd"}{
+\par or: }{\f2 "\\nHole verts %hd"}{
+\par 
+\par for each face vertex in the face or hole
+\par }{\f2 "<%ld,%ld> "}{
+\par 
+\par }{\i Binary format:}{
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell long\cell Number of faces and holes\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {?\cell ?\cell Faces and holes\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {\i A face is:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 bytes\cell byte\cell Flags byte     (}{\f2 F_HOLE }{flag is not set)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Number of vertices in face (not including any holes)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Material index for face\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {8 bytes each\cell long pairs\cell Face vertices.  Each consists of a long index in the local Vertex list followed by a long index into the UV Vertex list
+\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {\i A hole is:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 bytes\cell byte\cell Flags byte     (}{\f2 F_HOLE}{ flag is set)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Number of vertices in face (not including any holes)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {8 bytes each\cell long pairs\cell Face vertices.  Each consists of a long index in the local Vertex list followed by a long index into the UV Vertex list
+\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par There are two flags currently defined for faces:
+\par 
+\par }{\f2 #define F_HOLE\tab \tab 0x08\tab // (bit 3)
+\par #define F_BACKCULL\tab 0x10\tab // (bit 4)
+\par }{
+\par \tab The }{\f2 F_HOLE}{ flag is used to distinguish holes from faces in the binary format.  The }{\f2 F_BACKCULL}{ flag means that this face should not be dis
+played if it's facing away from the camera or view.  This flag is currently only used on two dimensional objects, where the front and back face of an object occupy the same space.
+\par 
+\par \tab The normal of a face is obtained by using the right hand rule.  Some opera
+tions like quad-divide will only work on objects which trueSpace considers to be solids.  For an object to be solid, the number of faces in an object minus two must equal the number of vertices plus the number of edges.  In addition each edge must be shar
+ed by exactly two faces.  Thus when a flat polygon is created in trueSpace, it is represented by two polygons; one facing up and one facing down.
+\par }\pard \ql \li0\ri1260\widctlpar\brdrb\brdrs\brdrw15\brsp20 \faauto\rin1260\lin0\itap0 {
+\par }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\f2 'Mat1'}{ (Material Chunk)
+\par 
+\par Chunk type: }{\f2 'Mat1'}{
+\par Major version: 0
+\par Minor version: 5
+\par 
+\par The material chunk consists of the following:
+\par \tab Chunk Header
+\par \tab Material data
+\par \tab Environment map data (optional)
+\par \tab Texture map data (optional)
+\par \tab Bump map data (optional)
+\par 
+\par \tab The material data contains the shader type, facet type, color (red, green, blue), and some 
+shader attributes: opacity (alpha), ambient coefficient (ka), specular coefficient (ks), hilight size coefficient (exp), and index of refraction (ior).  It also contains a material number.  All material chunks have a parent chunk and the material number i
+dentifies which child material this is.  For instance if a material chunk has material number 2 and its parent is a }{\f2 'PolH'}{ or polygonal chunk, then this is material number 2 of that chunk and all faces which have their material id set to 2 in the 
+}{\f2 'PolH'}{ chunk should use this material.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nmat# %d"}{\tab \tab \tab \tab - material number
+\par }{\f2 "\\nshader: %s  facet: %s"}{
+\par }{\f2 "\\nrgb %g,%g,%g"}{\tab \tab \tab - material color
+\par }{\f2 "\\nalpha %g  ka %g  ks %g  exp %g  ior %g"}{
+\par 
+\par Current possibilities for the shader field are: }{\f2 "flat"}{, }{\f2 "phong"}{ and }{\f2 "metal"}{.
+\par Current possibilities for the facet field are: }{\f2 "faceted"}{, }{\f2 "auto%d"}{, and }{\f2 "smooth"}{.  The autofacet choice contains a value for the autofacet angle.  Thus autofacet with an angle of 45 degrees would be "}{\f2 auto45"}{.
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Material number\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Shader type   (}{\f2 'f'}{-flat, }{\f2 'p'}{-phong, }{\f2 'm'}{-metal)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Facet type      (}{\f2 'f'}{-faceted, }{\f2 'a'}{-autofacet, }{\f2 's'}{-smooth)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Autofacet angle   (0 - 179 degrees) \cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Red component of color   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Green component of color   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Blue component of color   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Opacity   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Ambient coefficient   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Specular coefficient   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Hilight size coefficient   (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Index of refraction\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab If environment map data is present then it starts with an identifying field, the full pathname of the environment map file, and a set of flags.  The flags for environment maps are:
+\par }{\f2 
+\par #define ENVR_CUBIC\tab 0x01\tab // (bit 0)
+\par #define ENVR_USE\tab \tab 0x02\tab // (bit 1)
+\par }{
+\par The }{\f2 ENVR_USE}{ flag is always set.  The }{\f2 ENVR_CUBIC}{ flag is set to indicate that the environment map is a cubic map, otherwise its assumed to be a spherical environment map.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nenvironment: %s"}{\tab \tab  - full pathname of environment file
+\par }{\f2 "\\nflags %d"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Environment map data identifier   (}{\f2 'e:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Environment map flags\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2+length\cell string\cell Pathname of environment map file   (see }{\b Strings}{ section)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {
+\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab If texture map data is present then it starts with an identifying field, the full pathname of the texture map file, an offset in U and V, the number of times to repeat the texture map in U and V, and a set of flags.  The flags for texture maps are:
+
+\par 
+\par }{\f2 #define TXTR_OVERLAY\tab 0x01\tab // (bit 0)
+\par #define TXTR_USE\tab \tab 0x02\tab // (bit 1)
+\par }{
+\par The }{\f2 TXTR_USE}{ flag is always set.  If }{\f2 TXTR_OVERLAY}{ flag is set then the object's color will show through where the texture map is at least partially transparent.  Otherwise the object will be genuinely transparent in those areas.
+\par 
+\par }{\i ASCII format:}{
+\par }{\f2 "\\ntexture: %s"}{\tab \tab \tab - full pathname of texture file
+\par }{\f2 "\\noffset %g,%g  repeats %g,%g  flags %hd"}{
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Texture map data identifier   (}{\f2 't:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Texture map flags\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 
+\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {
+2+length\cell string\cell Pathname of texture map file   (see }{\b Strings}{ section)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {
+4 bytes\cell float\cell U offset for texture map\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 
+\clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell V offset for texture map\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Number of times to repeat texture map in U direction\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 
+\clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl
+\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Number of times to repeat texture map in V direction\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par \tab If bump map data is present then it starts with an identifying field, the full pathname of the bump map file, an amplitude for the b
+ump map, an offset in U and V, the number of times to repeat the bump map in U and V, and a set of flags.  The flags for bumps maps are:
+\par 
+\par }{\f2 #define BUMP_USE\tab \tab 0x02\tab // (bit 1)
+\par }{
+\par The }{\f2 BUMP_USE}{ flag is always set.
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nbump: %s"}{\tab \tab \tab - full pathname of bump file
+\par }{\f2 "\\noffset %g,%g  repeats %g,%g  amp %g  flags %hd"
+\par }{
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Bump map data identifier   (}{\f2 'b:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Bump map flags\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 
+\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {
+2+length\cell string\cell Pathname of bump map file   (see }{\b Strings}{ section)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {
+4 bytes\cell float\cell U offset for bump map\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell V offset for bump map\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Number of times to repeat bump map in U direction\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Number of times to repeat bump map in V direction\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 
+\clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl
+\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Relative amplitude of bump map\cell }\pard 
+\ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\row }\pard \ql \li0\ri1260\widctlpar\brdrb\brdrs\brdrw15\brsp20 \faauto\rin1260\lin0\itap0 {
+\par }\pard \ql \li0\ri1260\widctlpar\faauto\rin1260\lin0\itap0 {
+\par }{\f2 'PrTx'}{ (Procedural Texture Chunk)\tab }{\b\i New for trueSpace2}{
+\par 
+\par Chunk type: }{\f2 'PrTx'}{
+\par Major version: 0
+\par Minor version: 1
+\par 
+\par The procedural texture chunk consists of the following:
+\par \tab Chunk Header
+\par \tab Material data
+\par \tab Environment map data (optional)
+\par \tab One of Granite, Marble or Wood data (optional)
+\par \tab Bump map data (optional)
+\par 
+\par \tab The procedural texture chunk is very similar to the material chunk. If a material is to be procedurally textured, then this chunk will appear instead of a }{\f2 'Mat1'}{ chunk. The only difference between the two chunks is that where a }{\f2 'Mat1'}{
+ has an optional texture map specification, the }{\f2 'PrTx'}{ chunk has an optional Granite, Marble or Wood texture specification. Other than this, everything else is the same. Please see th
+e material chunk description above for information about all chunk elements except the Granite, Wood and Marble data. The RST solid texture coordinates are based on each object's untransformed world vertices.
+\par 
+\par \tab If Granite data is present then it begins with and identifying field, four RGBA colors, four contribution amounts (one for each color), sharpness, R, S and T scale values and a seed value.
+\par }\pard \ql \li0\ri0\widctlpar\faauto\rin0\lin0\itap0 {
+\par }{\i ASCII format:
+\par }{\f2 "\\ngranite:"
+\par "\\nrgba1 %g,%g,%g,%g rgba2 %g,%g,%g,%g"
+\par "\\nrgba3 %g,%g,%g,%g rgba4 %g,%g,%g,%g"
+\par "\\namount1 %g amount2 %g amount3 %g amount4 %g"
+\par "\\nsharpness %g scale %g,%g,%g seed %hd"
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Granite texture data identifier   (}{\f2 'g:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Reserved (set to 0 for now)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 1 red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 1 green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 1 blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 1 alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 2 red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 2 green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 2 blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 2 alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 3 red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 3 green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 3 blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 3 alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 4 red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 4 green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 4 blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Color 4 alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Amount of color 1 (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Amount of color 2 (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Amount of color 3 (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Amount of color 4 (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Sharpness (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell R scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell S scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell T scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Seed (1 - 32767)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\faauto\rin0\lin0\itap0 {\f2 
+\par \tab }{If Marble data is present then it begins with an identifying field, stone color and alpha, vein color and alpha, sharpness, R, S and T scale values, turbulence, grain axis, and a seed value. The grain axis is one of the following selections:
+\par 
+\par }{\f2 #define PROC_GRAIN_R\tab 0x01\tab // (bit 1)
+\par #define PROC_GRAIN_S\tab 0x02\tab // (bit 2)
+\par #define PROC_GRAIN_T\tab 0x04\tab // (bit 3)
+\par }{
+\par }{\i ASCII format:
+\par }{\f2 "\\nmarble:"
+\par "\\nstonergba %g,%g,%g,%g  veinrgba %g,%g,%g,%g"
+\par "\\nsharpness %g  scale %g,%g,%g"
+\par "\\nturbulence %hd  grain %hd  seed %hd"
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Marble texture data identifier   (}{\f2 'm:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Reserved (set to 0 for now)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Stone color red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Stone color green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Stone color blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Stone color alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Vein color red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Vein color green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Vein color blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Vein color alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Sharpness (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell R scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell S scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell T scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Vein turbulence (1 - 10)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell RST grain flag (see above)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Seed (1 - 32767)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\faauto\rin0\lin0\itap0 {\f2 
+\par \tab }{
+If Wood data is present then it begins with an identifying field, spring and summer wood RGBA colors, ratio of spring to summer wood, ring density, ring width variation, ring shape variation, R, S and T center for wood rings, R, S and T scale, grain axis 
+and a seed value. See the Marble description for information about the grain axis. Note that the RST center values are not presently exposed in the trueSpace2 user interface and should be set to (1.0, 1.0, 1.0).
+\par 
+\par }{\i ASCII format:
+\par }{\f2 "\\nwood:"
+\par "\\nspringrgba %g,%g,%g,%g  summerrgba %g,%g,%g,%g"
+\par "\\nldratio %g  rdensity %g  rwidthvar %g  rshapevar %g"
+\par "\\ncenter %g,%g,%g  scale %g,%g,%g"
+\par "\\ngrain %hd  seed %hd"
+\par 
+\par }{\i Binary format:
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt
+\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {Size\cell Type\cell Description\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell chars\cell Wood texture data identifier   (}{\f2 'w:'}{)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {1 byte\cell char\cell Reserved (set to 0 for now)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Spring wood color red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Spring wood color green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Spring wood color blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Spring wood color alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Summer wood color red (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Summer wood color green (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Summer wood color blue (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Summer wood color alpha (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Spring to summer ratio (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Ring density (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Ring width variation (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell Ring shape variation (0.0 - 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell R ring center (set to 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell S ring center (set to 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell T ring center (set to 1.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell R scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell S scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {4 bytes\cell float\cell T scale (0.0 - 10.0)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell RST grain flag (see above)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 
+\cltxlrtb\clftsWidth3\clwWidth5772 \cellx7380\pard \ql \li0\ri0\widctlpar\intbl\faauto\rin0\lin0 {2 bytes\cell short\cell Seed (1 - 32767)\cell }\pard \ql \li0\ri0\nowidctlpar\intbl\faauto\rin0\lin0 {\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth986 \cellx878\clvertalt\clbrdrt\brdrs\brdrw15 
+\clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth730 \cellx1608\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb\clftsWidth3\clwWidth5772 
+\cellx7380\row }\pard \ql \li0\ri0\widctlpar\faauto\rin0\lin0\itap0 {\f2 
+\par }}

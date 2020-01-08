@@ -1,0 +1,22 @@
+-- zeus homer-scripting-file
+
+-- Use comments to describe a modules function
+-- Debug setup script
+Packet("null","Zeus.DebugInit")
+
+Packet("null","Zeus.SetLogFile",
+
+	"appolonius.log"
+)
+
+-- Setup some internal variables
+
+
+-- Make a debug window - dont show it yet though.
+
+
+-- Bind a key to the debug window
+
+
+-- Command line facilities - some bindings and functionality
+

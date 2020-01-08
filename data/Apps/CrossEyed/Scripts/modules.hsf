@@ -1,0 +1,46 @@
+// zeus homer-scripting-file
+
+// Use comments to describe a modules function
+
+// WARINING: This is mainly for module loading. Init() funcions will not be called
+//		    until AFTER this script has completed.
+
+// NOTES:
+// - Whitespace is removed from paths and labels.
+// - All Caps are turned into lowercase. All text is equal. Dont rely on Caps for
+//   naming conventions.
+
+// Set Zeus debug controls
+Packet(null, Zeus.ConfigVars)
+{
+	int		0
+	int		0
+}
+
+// New module definition format - can be declared in any hsf (HomerScriptFile)
+// Module Load
+Packet(null, Zeus.LoadModule)
+{
+	string		"Render"
+// Change this to change renderer!	
+//	string		"Data/Apollo/Dlls/aRenderDX8.dll"
+	string		"Data/Apollo/Dlls/aRenderOGL.dll"
+}
+
+Packet(null, Zeus.LoadModule)
+{
+	string		"Input"
+	string		"Data/Apollo/Dlls/aInput.dll"
+}
+
+Packet(null, Zeus.LoadModule)
+{
+	string		"Material"
+	string		"Data/Apollo/Dlls/aMaterial.dll"
+}
+
+Packet(null, Zeus.LoadModule)
+{
+	string		"Font"
+	string		"Data/Apollo/Dlls/aFont.dll"
+}

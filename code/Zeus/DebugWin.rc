@@ -1,0 +1,199 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 464, 313
+STYLE DS_SETFONT | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Apollonious"
+FONT 8, "Trebuchet MS", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_LINESATROOT | TVS_NOTOOLTIPS | WS_TABSTOP,4,16,199,
+                    204,WS_EX_STATICEDGE
+    CTEXT           "Input Buffer packets",IDC_STATIC,4,4,199,9,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    CTEXT           "Modules",IDC_STATIC,208,4,156,9,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    PUSHBUTTON      "Stop Zeus",IDSTOP,368,4,91,13,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "Continue",IDCREATE,368,20,91,13,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "Cycle Run",IDCYCLERUN,368,36,91,13,0,WS_EX_STATICEDGE
+    CONTROL         "Modify Packets",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    BS_CENTER | BS_PUSHLIKE | WS_TABSTOP,368,160,91,13,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT2,368,52,92,12,ES_NUMBER | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Send All Packets",IDSENDALL,368,192,91,13,0,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Create Packet",IDCREATE,368,176,91,13,0,
+                    WS_EX_STATICEDGE
+    CTEXT           "Zeus Information",IDC_STATIC,207,107,156,10,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    CTEXT           "Debug Output window",IDC_STATIC,4,224,456,9,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    LISTBOX         IDC_LIST1,4,236,456,72,LBS_NOINTEGRALHEIGHT | LBS_NOSEL | 
+                    NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "Send Selected Packet",IDSENDONE,368,208,91,13,0,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Cycle Step",IDCYCLESTEP,368,68,91,13,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "Insert a Packet",IDBREAKPACKET,368,144,91,13,0,
+                    WS_EX_STATICEDGE
+    CONTROL         "List2",IDC_LIST2,"SysListView32",LVS_LIST | WS_TABSTOP,
+                    208,16,156,88,WS_EX_STATICEDGE
+    LISTBOX         IDC_LIST4,208,120,156,100,LBS_NOINTEGRALHEIGHT | NOT 
+                    WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "Profile Information",IDPROFILE,368,92,91,13,0,
+                    WS_EX_STATICEDGE
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 332, 153
+STYLE DS_SETFONT | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Profile"
+FONT 8, "Trebuchet MS", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_PROFILELIST1,0,0,332,152,NOT LBS_NOTIFY | 
+                    LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 457
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 242
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 325
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 146
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "0c0904b0"
+        BEGIN
+            VALUE "CompanyName", "DodgyBros"
+            VALUE "FileDescription", "Zeus"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Zeus"
+            VALUE "LegalCopyright", "Copyright © 2001"
+            VALUE "OriginalFilename", "Zeus.exe"
+            VALUE "ProductName", "DodgyBros Zeus"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0xc09, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ENABLE              ICON                    "icon_enable.ico"
+IDI_DISABLE             ICON                    "icon_disable.ico"
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

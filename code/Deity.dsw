@@ -1,0 +1,194 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "LUA"=.\ZEUS\LUA\LUA.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "System"=.\System\System.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Zeus"=.\Zeus\Zeus.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name LUA
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aFont"=.\APOLLO\aFont\aFont.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aInput"=.\Apollo\aInput\aInput.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aMaterial"=.\Apollo\aMaterial\aMaterial.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aRenderDX7"=.\Apollo\aRenderDX7\aRenderDX7.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aRenderDX8"=.\Apollo\aRenderDX8\aRenderDX8.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aRenderOGL"=.\Apollo\aRenderOGL\aRenderOGL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aSpaceRouter"=.\APOLLO\aSpaceRouter\aSpaceRouter.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "aWindow"=.\Apollo\aWindow\aWindow.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "cJetris"=.\Apps\cJetris\cJetris.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

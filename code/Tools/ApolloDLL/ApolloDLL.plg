@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ApolloDLL - Win32 Pseudo-Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ApolloDLL.res" /d "NDEBUG" /d "_PSEUDO_DEBUG" /d "_AFXDLL" "E:\DEVELOP\DEITY2\CODE\Tools\ApolloDLL\ApolloDLL.rc"" 
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP15.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ApolloDLL.pdb" /debug /machine:I386 /out:"Debug/ApolloDLL.awx" /implib:"Debug/ApolloDLL.lib" 
+.\Debug\ApolloDLL.obj
+.\Debug\ApolloDLLAw.obj
+.\Debug\Debug.obj
+.\Debug\StdAfx.obj
+.\Debug\ApolloDLL.res
+]
+Creating command line "link.exe @G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP15.tmp"
+Creating temporary file "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP16.bat" with contents
+[
+@echo off
+if not exist "G:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\nul" md "G:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template"
+copy ".\Debug\ApolloDLL.awx" "G:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template"
+if exist ".\Debug\ApolloDLL.pdb" copy ".\Debug\ApolloDLL.pdb" "G:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template"
+]
+Creating command line "G:\DOCUME~1\Grover\LOCALS~1\Temp\RSP16.bat"
+Compiling resources...
+Linking...
+<h3>Output Window</h3>
+Copying custom AppWizard to Template directory...
+A subdirectory or file G:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template already exists.
+        1 file(s) copied.
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+ApolloDLL.awx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
