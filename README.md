@@ -21,3 +21,15 @@ Feel free to use this as you want. Im not sure it even compiles :)
 License will be MIT inline with Lua's license scheme. 
 
 Hopefully I will progress this in the future. Will see.
+
+
+## Running Zeus
+Zeus will look for zeus.hsf to run as the main program. 
+```Zeus.exe```
+
+While running a number of key commands are available to control Zeus.
+Shift+Escape - Exit running Zeus (you should shutdown this way)
+Ctrl+Alt+F1  - Open the Debugging window for Zeus
+
+## Notes
+The snapshot of this code is quite unstable. It was an early version. I will update it if I find some newer ones in my archives :)
