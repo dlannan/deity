@@ -24,6 +24,9 @@ Hopefully I will progress this in the future. Will see.
 
 
 ## Running Zeus
+Windows 32bit application - will run under Wine as well. 
+The OpenGL driver needs old runtimes if you can find them. 
+
 Zeus will look for zeus.hsf to run as the main program. 
 ```Zeus.exe```
 
